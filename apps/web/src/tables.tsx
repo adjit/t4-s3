@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { api } from "./api";
 import { go, openInQuery, useBucket } from "./ctx";
-import { formatBytes, formatCount, num, percent, relativeDate, sqlString, text, type Row } from "./format";
+import { formatBytes, formatCount, num, plural, percent, relativeDate, sqlString, text, type Row } from "./format";
 import { Icon } from "./icons";
 import { CopyButton, Crumbs, DataTable, Empty, ErrorText } from "./ui";
 
@@ -182,7 +182,7 @@ GROUP BY 1, 2`,
         {!tables.isLoading && !row ? <div className="card"><Empty title="This table is not in the index" body="It may have been removed, or the bucket needs re-indexing." action="All tables" href="/tables" /></div> : null}
 
         <div className="kpis">
-          <div className="card kpi"><span>Size on S3</span><strong>{formatBytes(totalBytes)}</strong><small>{formatCount(row?.objects)} objects</small></div>
+          <div className="card kpi"><span>Size on S3</span><strong>{formatBytes(totalBytes)}</strong><small>{plural(num(row?.objects), "object")}</small></div>
           <div className="card kpi"><span>Data files</span><strong>{formatCount(dataFiles)}</strong><small>{dataFiles ? `${formatBytes(dataBytes / dataFiles)} on average` : "None under data/"}</small></div>
           <div className="card kpi"><span>Metadata files</span><strong>{formatCount(metaFiles)}</strong><small>{formatBytes(metaBytes)}</small></div>
           <div className="card kpi"><span>Last write</span><strong style={{ fontSize: 20 }}>{relativeDate(row?.newest)}</strong><small>From the index</small></div>

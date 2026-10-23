@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { api } from "./api";
 import { go, useBucket } from "./ctx";
-import { formatBytes, formatCount, num, text, type Row } from "./format";
+import { formatBytes, num, plural, text, type Row } from "./format";
 import { Icon } from "./icons";
 import { ErrorText } from "./ui";
 
@@ -302,7 +302,7 @@ function IndexStep({ connectionId, bucket, onBack }: { connectionId: string; buc
         </div>
       ) : status === "done" ? (
         <>
-          <p className="result">Indexed {formatCount(result.rows)} objects ({formatBytes(result.bytes)}).</p>
+          <p className="result">Indexed {plural(num(result.rows), "object")} ({formatBytes(result.bytes)}).</p>
           <div><button className="btn pri" type="button" onClick={() => void finish()}>Open {bucket} in Browse</button></div>
         </>
       ) : status === "failed" || status === "error" ? (

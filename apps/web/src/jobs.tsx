@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { api } from "./api";
-import { asRecord, formatBytes, formatCount, num, relativeDate, text, type Row } from "./format";
+import { asRecord, formatBytes, num, plural, relativeDate, text, type Row } from "./format";
 import { Icon } from "./icons";
 import { Empty, ErrorText, StatusBadge } from "./ui";
 
@@ -82,9 +82,9 @@ export function Jobs(): ReactNode {
                         ) : row.error ? (
                           <span className="error">{text(row.error)}</span>
                         ) : result.rows != null ? (
-                          <span>{formatCount(result.rows)} objects · {formatBytes(result.bytes)}{result.listRequests != null ? ` · ${formatCount(result.listRequests)} list requests` : ""}</span>
+                          <span>{plural(num(result.rows), "object")} · {formatBytes(result.bytes)}{result.listRequests != null ? ` · ${plural(num(result.listRequests), "list request")}` : ""}</span>
                         ) : result.findings != null ? (
-                          <span>{formatCount(result.findings)} findings · {formatBytes(result.reclaimableBytes)} reclaimable</span>
+                          <span>{plural(num(result.findings), "finding")} · {formatBytes(result.reclaimableBytes)} reclaimable</span>
                         ) : (
                           <span className="mut">{text(row.message) || "—"}</span>
                         )}

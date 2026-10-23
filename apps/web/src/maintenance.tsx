@@ -496,7 +496,7 @@ export function PlanDetail({ id }: { id: string }): ReactNode {
           {bucket ? (
             <div>
               <button className="link" type="button" onClick={() => openInQuery(`SELECT key, version_id, upload_id, size, status, error\nFROM action_plan_items\nWHERE plan_id = ${sqlString(id)}\nORDER BY key`)}>
-                Open all {formatCount(plan.data?.object_count)} items in Query
+                {num(plan.data?.object_count) === 1 ? "Open this item in Query" : `Open all ${plural(num(plan.data?.object_count), "item")} in Query`}
               </button>
             </div>
           ) : null}
