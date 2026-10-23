@@ -1,0 +1,10 @@
+id: top-consumers
+title: Top consumers
+summary: Largest prefixes.
+group: space
+severity: info
+action: report
+params:
+  limit:
+    type: integer
+    default: 20

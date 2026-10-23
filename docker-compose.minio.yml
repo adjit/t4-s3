@@ -1,0 +1,48 @@
+# Optional local MinIO for trying the app. Use it together with docker-compose.yml:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.minio.yml up -d --build
+#
+# Then add a connection in the UI:
+#   Endpoint http://minio:9000 · Access key t4admin · Secret t4secret-change-me · Path style
+#
+# Dev-only credentials. Do not reuse t4admin / t4secret-change-me anywhere else.
+# MinIO console: http://localhost:9001
+
+services:
+  minio:
+    image: minio/minio
+    command: server /data --console-address :9001
+    ports:
+      - "${T4_MINIO_PORT:-9000}:9000"
+      - "${T4_MINIO_CONSOLE_PORT:-9001}:9001"
+    environment:
+      MINIO_ROOT_USER: t4admin
+      MINIO_ROOT_PASSWORD: t4secret-change-me
+    volumes:
+      - minio-data:/data
+
+  # Creates the "demo" bucket with two small files. Safe to re-run.
+  minio-init:
+    image: minio/mc
+    depends_on:
+      - minio
+    restart: "no"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -eu
+        until mc alias set local http://minio:9000 t4admin t4secret-change-me; do
+          echo "waiting for minio"
+          sleep 1
+        done
+        mc mb --ignore-existing local/demo
+        mc stat local/demo/readme.txt >/dev/null 2>&1 || mc pipe local/demo/readme.txt <<'EOF'
+        t4 demo bucket
+        EOF
+        mc stat local/demo/warehouse/users/users.csv >/dev/null 2>&1 || mc pipe local/demo/warehouse/users/users.csv <<'EOF'
+        id,name
+        1,ada
+        EOF
+
+volumes:
+  minio-data:

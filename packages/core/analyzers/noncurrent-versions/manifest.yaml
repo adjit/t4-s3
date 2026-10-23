@@ -1,0 +1,7 @@
+id: noncurrent-versions
+title: Delete old noncurrent versions
+summary: Noncurrent versions and delete markers grouped by prefix.
+group: space
+severity: medium
+action: delete
+params: {}

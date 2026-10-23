@@ -1,0 +1,10 @@
+id: key-hygiene
+title: Key hygiene
+summary: Whitespace, double slashes, control characters, very long keys, and case-only collisions.
+group: space
+severity: low
+action: report
+params:
+  max_length:
+    type: integer
+    default: 1024

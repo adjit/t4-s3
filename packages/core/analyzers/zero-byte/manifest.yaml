@@ -1,0 +1,7 @@
+id: zero-byte
+title: Zero-byte and placeholder objects
+summary: Empty objects and keys that end with a slash.
+group: space
+severity: low
+action: delete
+params: {}

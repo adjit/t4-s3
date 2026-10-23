@@ -1,0 +1,13 @@
+id: small-files
+title: Small files
+summary: Prefixes with many objects and a low median size.
+group: space
+severity: low
+action: report
+params:
+  min_count:
+    type: integer
+    default: 10
+  max_median:
+    type: integer
+    default: 16777216

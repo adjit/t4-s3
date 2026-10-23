@@ -1,7 +1,24 @@
+node_modules/
+dist/
+data/
+.env
+*.duckdb
+*.duckdb.wal
+coverage/
+packages/core/spike.mjs
+packages/core/spike-secret.txt
+packages/core/allowed/
+packages/core/out.csv
+packages/core/spike-out.parquet
+spike-secret.txt
+allowed/
+.DS_Store
 
-# Beads / Dolt files (added by bd init)
-.dolt/
-*.db
-.beads-credential-key
-.beads/proxieddb/
-*.gate.lock*
+# Local tooling and artifacts
+.playwright-mcp/
+.beads.gate.lock
+*.log
+.env.*
+!.env.example
+secrets.json
+dev-token.txt

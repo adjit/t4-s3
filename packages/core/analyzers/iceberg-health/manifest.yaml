@@ -1,0 +1,7 @@
+id: iceberg-health
+title: Iceberg table health
+summary: Small files under detected Iceberg table locations. Report only.
+group: iceberg
+severity: low
+action: report
+params: {}

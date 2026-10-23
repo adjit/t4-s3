@@ -1,0 +1,8 @@
+id: incomplete-multipart
+title: Abort incomplete multipart uploads
+summary: Orphaned upload parts from a live listing.
+group: space
+severity: medium
+action: abort_multipart
+prepare: multipart
+params: {}

@@ -1,0 +1,2 @@
+action: report
+description: Report only. Renaming keys is a copy, and v1 does not copy objects.

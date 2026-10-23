@@ -1,0 +1,2 @@
+action: abort_multipart
+description: Abort the incomplete uploads. Where lifecycle is supported, add an abort-incomplete-uploads rule.

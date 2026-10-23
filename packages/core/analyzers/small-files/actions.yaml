@@ -1,0 +1,2 @@
+action: report
+description: Compaction advice only. This tool does not rewrite object bytes.

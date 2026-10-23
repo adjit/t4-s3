@@ -1,0 +1,7 @@
+id: posture
+title: Posture
+summary: Objects the store reports as unencrypted.
+group: posture
+severity: high
+action: report
+params: {}

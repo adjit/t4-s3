@@ -1,0 +1,7 @@
+id: duplicates
+title: Remove duplicate objects
+summary: Same size and ETag across keys. Multipart ETags are excluded.
+group: space
+severity: medium
+action: delete
+params: {}

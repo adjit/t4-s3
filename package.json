@@ -1,0 +1,21 @@
+{
+  "name": "t4-storage",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @t4/api --filter @t4/web dev",
+    "build": "pnpm --filter @t4/web build && pnpm --filter @t4/api build",
+    "test": "pnpm --filter @t4/core test && pnpm --filter @t4/api test",
+    "typecheck": "pnpm -r typecheck",
+    "start": "pnpm --filter @t4/api start",
+    "seed": "pnpm --filter @t4/api seed"
+  }
+}

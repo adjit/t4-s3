@@ -1,0 +1,8 @@
+id: lifecycle-coverage
+title: Lifecycle coverage
+summary: Bytes not covered by any cached lifecycle rule.
+group: space
+severity: low
+action: report
+prepare: lifecycle
+params: {}

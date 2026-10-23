@@ -1,0 +1,2 @@
+action: delete
+description: Review, then delete the extra copies. One object with this size and ETag is kept.

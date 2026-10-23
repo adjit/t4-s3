@@ -1,0 +1,10 @@
+id: old-data
+title: Old data worth reviewing
+summary: Prefixes with no writes in N days.
+group: space
+severity: medium
+action: delete
+params:
+  days:
+    type: integer
+    default: 180

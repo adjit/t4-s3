@@ -1,0 +1,27 @@
+{
+  "name": "@t4/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "seed": "tsx src/seed.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.916.0",
+    "@fastify/cors": "^11",
+    "@fastify/static": "^8",
+    "@t4/core": "workspace:*",
+    "fastify": "^5",
+    "tsx": "^4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

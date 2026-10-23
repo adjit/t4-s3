@@ -1,0 +1,25 @@
+# Runs only the app. It starts with no stores; add one in the UI (Settings, or the first-run setup).
+#
+#   docker compose up -d --build        -> http://localhost:8080
+#
+# Want a local S3 to try it against? Add the optional MinIO file:
+#   docker compose -f docker-compose.yml -f docker-compose.minio.yml up -d --build
+# then connect to http://minio:9000 in the UI (see README, "Optional local MinIO").
+
+services:
+  app:
+    build: .
+    ports:
+      - "${T4_PORT:-8080}:8080"
+    volumes:
+      # The DuckDB index, saved connections, and their secrets live here. Never commit this data.
+      - t4-data:/data
+    environment:
+      T4_DATA_DIR: /data
+      # App login token. "local-dev-token" is a DEV DEFAULT for a machine only you can reach.
+      # Set T4_TOKEN in your shell or in .env before exposing the app anywhere.
+      T4_TOKEN: ${T4_TOKEN:-local-dev-token}
+      T4_ACTOR: ${T4_ACTOR:-local}
+
+volumes:
+  t4-data:

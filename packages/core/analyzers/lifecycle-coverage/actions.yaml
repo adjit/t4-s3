@@ -1,0 +1,2 @@
+action: report
+description: Draft a lifecycle rule where the store supports it. Bytes here are uncovered, not yet reclaimable.

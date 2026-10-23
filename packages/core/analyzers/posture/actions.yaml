@@ -1,0 +1,2 @@
+action: report
+description: Report only. Encryption is changed by rewriting the object.

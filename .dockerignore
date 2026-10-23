@@ -1,0 +1,10 @@
+node_modules
+**/node_modules
+data
+dist
+**/dist
+.git
+.env
+*.duckdb
+*.duckdb.wal
+coverage

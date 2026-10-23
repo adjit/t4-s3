@@ -1,0 +1,2 @@
+action: report
+description: Copy the table engine statement. This tool never deletes files under an Iceberg table in v1.
